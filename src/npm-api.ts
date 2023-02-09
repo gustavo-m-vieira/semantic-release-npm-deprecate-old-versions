@@ -13,7 +13,12 @@ export class NpmApi {
   ): Promise<PackageInfo | undefined> {
     try {
       const response = await this.fetch(
-        `${npmConfig.registry}${encodeURIComponent(packageName)}`
+        `${npmConfig.registry}${encodeURIComponent(packageName)}`,
+        {
+          headers: {
+            Authorization: `Bearer ${npmConfig.token}`,
+          },
+        }
       );
 
       if (response.status === 404) {

@@ -15,6 +15,7 @@ import { PackageInfo } from "./interfaces/package-info.interface";
 import { ListActiveVersions } from "./list-active-versions";
 import { DeprecierState } from "./deprecier-state";
 import { Npm } from "./npm";
+import { NpmConfig } from "./interfaces/npm.interface";
 
 export class OldVersionDeprecier {
   constructor(
@@ -92,7 +93,7 @@ export class OldVersionDeprecier {
       );
 
       await this.authentifier.authenticate(
-        this.deprecierState.npmConfig!,
+        this.deprecierState.npmConfig as NpmConfig,
         context
       );
 

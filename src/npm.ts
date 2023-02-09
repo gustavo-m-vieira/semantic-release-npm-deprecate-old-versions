@@ -75,6 +75,9 @@ export class Npm {
       const parsedResponse: NpmConfig = JSON.parse(result.stdout as string);
 
       context.logger.log(`Registry used:`, parsedResponse.registry);
+
+      parsedResponse.token = context.env.NPM_TOKEN;
+
       return parsedResponse;
     } catch (e) {
       console.error(e);

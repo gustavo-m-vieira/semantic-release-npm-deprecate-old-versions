@@ -246,10 +246,12 @@ describe("npm", () => {
         logger.log("Registry used:", "https://registry.npmjs.org")
       ).thenReturn(undefined);
 
+      when(context.env).thenReturn(env);
+
       const result = await npm.getConfig(instance(context));
 
       verifyAll();
-      expect(result).toEqual(config);
+      expect(result).toEqual({ ...config, token: "token" });
     });
   });
 });
